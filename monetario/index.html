@@ -1,0 +1,16 @@
+<html>
+	<head>
+		<script>
+			//Money string to float
+			function moneyToFloat(text){
+				var clearText = text.replace("R$ ","").replace(",",".");
+				return parseFloat(clearText);
+			}
+
+			function floatToMoney(value){
+				var text = (value < 1 ? "0" : "") + Math.floor(value*100);
+				text = "R$ " + text;
+			}
+		</script>
+	</head>
+</html>

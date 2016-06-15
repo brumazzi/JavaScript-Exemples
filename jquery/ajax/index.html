@@ -1,0 +1,24 @@
+<!Doctype html>
+
+<html>
+	<head>
+		<script src="jquery.js"></script>
+	</head>
+	<body>
+		<input type="button" value="pull form">
+	</body>
+		<script>
+			$('input').click(function(){
+				$.ajax({
+					type: "POST",
+					url: "form.html",
+					success: function(request){
+						$('body').html(request);
+					},
+					error: function(request, stat, error){
+						alert(error);
+					}
+				});
+			});
+		</script>
+</html>

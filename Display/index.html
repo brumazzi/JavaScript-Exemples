@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html id="html">
+    <head>
+    	<meta charset='utf-8'>
+    	<style>
+    		html{
+    			width: auto;
+    			height: auto;
+    			color: #555;
+    		}
+    		div{width:210px;height:20px;background:#ccc;}
+    		form{margin: auto;}
+    	</style>
+    	<script>
+    		document.getElementById('html').style.color = 'green';
+		document.getElementById('check').style.position = 'relative';
+    		function sleep(millis){
+    			var time = new Date().getTime();
+    			var c_time = null;
+    			
+    			do{
+    				c_time = new Date().getTime();
+    			}while(c_time-time < millis);
+//    			alert('');
+    		}
+		function off(element){
+			element.style.display = 'none';
+		}
+    		function set_display(disp,element_id){
+    			document.getElementById(element_id).style.display = disp;
+    		}
+    		
+    		function draw_element(id){
+    			document.write(document.getElementById(id).value);
+    		}
+    		
+    		function draw_screen(id,color){
+    			var xid = document.getElementById(id).value;
+    			var cid = document.getElementById(color).value;
+    			document.getElementById('xform').display = 'none';
+    		}
+
+		function ch_step(distance){
+			document.getElementById('check').style.left = distance;
+			//alert('');
+		}
+    	</script>
+	<noscript>O navegador não tem suporte para JavaScript!</noscript>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>JSP Page</title>
+    </head>
+    <body onload="moveTo(0,0); resizeTo(800,600);">
+        <h1>Hello World!</h1>
+        <div id="div">
+        	Escrevendo dentro da div
+        	<script>
+	        	var w = document.getElementById('div').clientWidth.valueOf();
+    	    	var h = document.getElementById('div').clientHeight.valueOf();
+    	    	var color = document.getElementById('html').style.color;
+    	    	document.getElementById('html').style.display = "block";
+
+   		    	document.write(w+'-'+h);
+   	    		document.write("<br>"+color);
+    		</script>
+    		<input id='hide' type='button' value="Hide <<" onclick="set_display('none','xform');set_display('none','hide');set_display('inline','show');">
+        	<input id='show' type='button' value="Show >>" onclick="set_display('block','xform');set_display('none','show');set_display('inline','hide');">
+        	<form id='xform'>
+        		<input type='text' name='user'>
+        		<input type='password' name='pass'>
+        		<input type='submit' value='Confirmar'>
+        	</form>
+        	<script>document.getElementById('show').style.display = "none";</script>
+        	<h6>Criar Componente</h6>
+        	<input id='new' type='text'><input type='button' value='Criar' onclick="draw_element('new');">
+		<br><br><input type='button' value='click' onclick="off(this);"><br>
+		<input type='button' value='<--' style='float:left' onclick="ch_step('1em');">
+		<input type='checkbox' value='check' id='check' checked>
+		<input type='button' value='-->' style='float:right' onclick="ch_step('1em');">
+        </div>
+    </body>
+</html>

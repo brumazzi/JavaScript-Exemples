@@ -1,0 +1,20 @@
+<!doctype html>
+
+<html>
+	<head>
+		<script>
+			function createFile(){
+				var fso = new ActiveXObject("Scripting.FilesSystemObject");
+				var file = fso.CreateTextFile("/home/user/file.txt", true);
+				file.writeline("linha");
+				file.writeline("linha");
+				file.Close();
+			}
+
+			createFile();
+			alert('');
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

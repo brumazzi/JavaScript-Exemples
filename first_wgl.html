@@ -1,0 +1,60 @@
+<!Doctype HTML>
+
+<html>
+	<head>
+		<script src="three.min.js"></script>
+		<style>
+			body{margin:0px; background-color: black;overflow:hidden;}
+			canvas{width: 100%;height:100%;}
+		</style>
+	</head>
+	<body>
+		<script>
+			var th = THREE;
+			var scene = new th.Scene();
+			var camera = new th.PerspectiveCamera(75, window.innerWidth/window.innerHeight, 0.1, 1000);
+
+			var render = new th.WebGLRenderer();
+			render.setSize(window.innerWidth, window.innerHeight);
+			document.body.appendChild(render.domElement);
+
+			var geometry = new th.BoxGeometry(1,1,1);
+			var material = new th.MeshBasicMaterial({color: 0xffffff});
+			var cube = new th.Mesh(geometry, material);
+			scene.add(cube);
+
+			var geometry2 = new th.BoxGeometry(1,1,1);
+			var material2 = new th.MeshBasicMaterial({color: 0xffffff});
+			var cube2 = new th.Mesh(geometry, material);
+			scene.add(cube2);
+
+			camera.position.z = 5;
+			var mov1 = true;
+
+			var rnd = function(){
+				render.setSize(window.innerWidth, window.innerHeight);
+				requestAnimationFrame(rnd);
+				////////////////////////////////////////
+				cube.rotation.z += 0.01;
+				cube.position.x -= 0.05;
+
+				if(cube.position.x < -20)
+					cube.position.x = 20;
+				///////////////////////////////////////
+				if(mov1)
+					cube2.position.y += 0.05;
+				else
+					cube2.position.y -= 0.05;
+
+				if(cube2.position.y > 4)
+					mov1 = false;
+				else if(cube2.position.y < -4)
+					mov1 = true;
+				///////////////////////////////////////
+				render.render(scene, camera);
+			}
+
+			rnd();
+		</script>
+	</body>
+</html>

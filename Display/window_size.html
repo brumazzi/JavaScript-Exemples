@@ -1,0 +1,14 @@
+<!doctype html>
+
+<html>
+	<body>
+		<script>
+			document.write(window.innerWidth);
+			document.write("-");
+			document.write(window.innerHeight);
+			window.onresize = function resize(){
+				alert(window.innerWidth+'|'+window.innerHeight);
+			}
+		</script>
+	</body>
+</html>
